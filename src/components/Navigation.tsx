@@ -8,7 +8,6 @@ interface NavigationProps {
 
 export default function Navigation({ onSectionChange, activeSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,14 +16,6 @@ export default function Navigation({ onSectionChange, activeSection }: Navigatio
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const contractAddress = 'Ekyr3MtY2YeXprE1UJaeFkwgUhg1ZjUQJP7UJRmEpump';
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(contractAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const sections = [
     { id: 'overview', label: 'Overview' },
@@ -35,7 +26,7 @@ export default function Navigation({ onSectionChange, activeSection }: Navigatio
 
   return (
     <>
-      {/* Top bar with Twitter and CA */}
+      {/* Top bar with Twitter */}
       <motion.div
         className="fixed top-0 left-0 right-0 z-50 glass-strong py-2 px-6"
         initial={{ y: -50 }}
@@ -43,19 +34,6 @@ export default function Navigation({ onSectionChange, activeSection }: Navigatio
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4">
-          <button
-            onClick={copyToClipboard}
-            className="text-xs font-mono text-white/70 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <span>CA: {contractAddress.slice(0, 4)}...{contractAddress.slice(-4)}</span>
-            {copied ? (
-              <span className="text-giveback-green text-xs">Copied!</span>
-            ) : (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-            )}
-          </button>
           <a
             href="https://x.com/GiveBack_dev"
             target="_blank"
