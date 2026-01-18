@@ -18,7 +18,7 @@ export default function Navigation({ onSectionChange, activeSection }: Navigatio
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const contractAddress = '3WYUgKqJLmzya4jHV8TGCgohu9DXEHnMCcJEqVqepump';
+  const contractAddress = '8LFaZgRk8GzdPTp7gmYy7gbKtV3H2sXritspUR3Apump';
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(contractAddress);
